@@ -44,7 +44,7 @@ public class IntInText {
     public final static String x200="двести";
     public final static String x300="триста";
     public final static String x400="четыреста";
-    public final static String x500="пятсот";
+    public final static String x500="пятьсот";
     public final static String x600="шестьсот";
     public final static String x700="семьсот";
     public final static String x800="восемьсот";
