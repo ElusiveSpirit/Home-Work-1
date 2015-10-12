@@ -17,17 +17,43 @@ import android.widget.Toast;
  */
 public class IntroActivity extends Activity {
 
-    IntroActivity introActivity = this;
+    private final String TASK = "adv.android_11.solleks.homework1.TASK";
 
+    WaitAndStart mWAS;
+
+
+    // TODO Существует ли альтернативный способ решения данного вопроса?
+    // Вызывается ли какой-то метод после onResume?
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        // TODO Существует ли альтернативный способ решения данного вопроса?
-        // Вызывается ли какой-то метод после onResume?
-        new WaitAndStart().execute();
+        // TODO Этот метод исключен с sdk13. Что его заменило?
+        mWAS = (WaitAndStart)getLastNonConfigurationInstance();
+        if (mWAS == null) {
+            mWAS= new WaitAndStart();
+            mWAS.execute();
+        }
+        mWAS.setLink(this);
+    }
+
+    public Object onRetainNonConfigurationInstance() {
+        mWAS.unLink();
+        return mWAS;
     }
 
     class WaitAndStart extends AsyncTask<Void, Void, Void> {
+
+        IntroActivity activity;
+
+        // получаем ссылку на MainActivity
+        void setLink(IntroActivity act) {
+            activity = act;
+        }
+
+        // обнуляем ссылку
+        void unLink() {
+            activity = null;
+        }
 
         @Override
         protected void onPreExecute() {
