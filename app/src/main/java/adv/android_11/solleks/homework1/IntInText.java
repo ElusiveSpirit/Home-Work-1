@@ -57,36 +57,37 @@ public class IntInText {
 
 
     public static String convert(int x){
-        String no=String.valueOf(x);
-        String res="";
-        Field fild;
+        String  no = String.valueOf(x),
+                res = "";
+        Field field;
         try{
-            Class clas = IntInText.class;
+            Class pickClass = IntInText.class;
 
-            if(x > 999){
-                fild = IntInText.class.getField("x"+no.charAt(no.length() - 4)+"000");
-                res+=" "+fild.get(clas).toString();
-                x = x % 1000;
-                no = String.valueOf(x);
+            if (x == 0) {
+                return IntInText.x;
+            } else {
+                int thisNumber,
+                    index = (int)Math.pow(10, no.length() - 1);
+                while (index > 0) {
+                    switch (thisNumber = x / index) {
+                        case 0 :
+                            x %= index;
+                            index /= 10;
+                            continue;
+                        case 1 :
+                            if (index == 10 && (x / (index + 1) != 0)) {
+                                field = IntInText.class.getField("x" + (x % 100));
+                                res += " " + field.get(pickClass).toString();
+                                index = 0;
+                                continue;
+                            }
+                    }
+                    field = IntInText.class.getField("x" + thisNumber * index);
+                    res += " " + field.get(pickClass).toString();
+                    x %= index;
+                    index /= 10;
+                }
             }
-            if(x>99){
-                fild = IntInText.class.getField("x"+no.charAt(no.length()-3)+"00");
-                res+=" "+fild.get(clas).toString()+res;
-                x = x % 100;
-                no = String.valueOf(x);
-            }
-            if(x>19) {
-                    fild = IntInText.class.getField("x" + no.charAt(no.length() - 2) + "0");
-                    res += " " + fild.get(clas).toString();
-            }
-            if(no.length()-2>-1 && no.charAt(no.length()-2)=='1'){
-                fild = IntInText.class.getField("x1"+no.charAt(no.length()-1));
-                res+=" "+fild.get(clas).toString();
-            } else if(no.charAt(no.length()-1)!='0'){
-                fild = IntInText.class.getField("x"+no.charAt(no.length()-1));
-                res+=" "+fild.get(clas).toString();
-            }
-
         }catch(Exception e){
             e.printStackTrace();
         }
