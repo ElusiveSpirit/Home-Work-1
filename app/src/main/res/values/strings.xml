@@ -4,4 +4,52 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="Image">Image</string>
+    <string name="x">ноль</string>
+
+    <string name="x1">один</string>
+    <string name="xx1">одна</string>
+
+    <string name="x2">два</string>
+    <string name="xx2">две</string>
+
+    <string name="x3">три</string>
+    <string name="x4">четыре</string>
+    <string name="x5">пять</string>
+    <string name="x6">шесть</string>
+    <string name="x7">семь</string>
+    <string name="x8">восемь</string>
+    <string name="x9">девять</string>
+    <string name="x10">десять</string>
+
+    <string name="x11">одиннадцать</string>
+    <string name="x12">двенадцать</string>
+    <string name="x13">тринадцать</string>
+    <string name="x14">четырнадцать</string>
+    <string name="x15">пятнадцать</string>
+    <string name="x16">шестнадцать</string>
+    <string name="x17">семнадцать</string>
+    <string name="x18">восемнадцать</string>
+    <string name="x19">девятнадцать</string>
+
+
+    <string name="x20">двадцать</string>
+    <string name="x30">тридцать</string>
+    <string name="x40">сорок</string>
+    <string name="x50">пятьдесят</string>
+    <string name="x60">шестьдесят</string>
+    <string name="x70">семьдесят</string>
+    <string name="x80">восемьдесят</string>
+    <string name="x90">девяноста</string>
+
+    <string name="x100">сто</string>
+    <string name="x200">двести</string>
+    <string name="x300">триста</string>
+    <string name="x400">четыреста</string>
+    <string name="x500">пятьсот</string>
+    <string name="x600">шестьсот</string>
+    <string name="x700">семьсот</string>
+    <string name="x800">восемьсот</string>
+    <string name="x900">девятьсот</string>
+
+    <string name="x1000">тысяча</string>
 </resources>

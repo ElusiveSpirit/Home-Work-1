@@ -21,6 +21,7 @@ public class MainActivity extends ListActivity {
 
         ImageText[] imageTexts = new ImageText[1000];
         boolean t = true;
+        IntInText.activity = this;
        for (int i = 0; i < 1000; i++) {
             imageTexts[i] = new ImageText(IntInText.convert(i + 1), 0, ((t = !t) ? R.color.white : R.color.gray));
         }
