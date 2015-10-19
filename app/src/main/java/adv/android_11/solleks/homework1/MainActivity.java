@@ -2,15 +2,11 @@ package adv.android_11.solleks.homework1;
 
 import android.app.ListActivity;
 import android.content.Context;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 public class MainActivity extends ListActivity {
@@ -21,9 +17,9 @@ public class MainActivity extends ListActivity {
 
         ImageText[] imageTexts = new ImageText[1000];
         boolean t = true;
-        IntInText.activity = this;
+        IntInText intInText = new IntInText(this);
        for (int i = 0; i < 1000; i++) {
-            imageTexts[i] = new ImageText(IntInText.convert(i + 1), 0, ((t = !t) ? R.color.white : R.color.gray));
+            imageTexts[i] = new ImageText(intInText.convert(i + 1), 0, ((t = !t) ? R.color.white : R.color.gray));
         }
         setListAdapter(new ImageArrayAdapter(getBaseContext(), R.layout.item, getLayoutInflater(), imageTexts));
     }

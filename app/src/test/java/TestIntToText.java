@@ -1,6 +1,6 @@
+import android.app.Activity;
 
-
-
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -18,6 +18,7 @@ public class TestIntToText {
 
     private String mText;
     private int mNumber;
+    private IntInText intInText;
 
     public TestIntToText(String text, int number) {
         this.mText = text;
@@ -41,9 +42,14 @@ public class TestIntToText {
         );
     }
 
+    @Before
+    public void beforeTest() {
+        intInText = new IntInText(new Activity());
+    }
+
     @Test
     public void testConvert() {
-        assertEquals(mText, IntInText.convert(mNumber));
+        assertEquals(mText, this.intInText.convert(mNumber));
     }
 
 }

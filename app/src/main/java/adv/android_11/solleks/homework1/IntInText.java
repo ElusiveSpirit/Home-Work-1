@@ -1,15 +1,22 @@
 package adv.android_11.solleks.homework1;
 
-import java.lang.reflect.Field;
-
 import android.app.Activity;
 import android.content.res.Resources;
+import java.lang.reflect.Field;
 
 public class IntInText {
 
-    public static Activity activity;
+    private Activity activity;
 
-    public static String convert(int x){
+    public IntInText(Activity activity) {
+        this.activity = activity;
+    }
+
+    public String convert(int x){
+        if (activity == null) {
+            return "";
+        }
+
         String  no = String.valueOf(x),
                 res = "";
         Field field;
@@ -29,16 +36,14 @@ public class IntInText {
                             continue;
                         case 1 :
                             if (index == 10 && (x / (index + 1) != 0)) {
-                                // TODO Найти способ вызова ресурсов
                                 field = pickClass.getField("x" + (x % 100));
-                                res += " " + activity.getResources().getString(R.string.app_name);
-
+                                res += " " + activity.getString((int)field.get(pickClass));
                                 index = 0;
                                 continue;
                             }
                     }
                     field = pickClass.getField("x" + thisNumber * index);
-                    res += " " + Resources.getSystem().getString((int)field.get(pickClass));
+                    res += " " + activity.getString((int)field.get(pickClass));
                     x %= index;
                     index /= 10;
                 }
